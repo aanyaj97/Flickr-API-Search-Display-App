@@ -7,3 +7,6 @@
 //
 
 #import "AFNetworking/AFNetworking.h"
+#import "SwiftyJSON/SwiftyJSON-Swift.h"
+
+#import "SwiftyJSON/SwiftyJSON.h"

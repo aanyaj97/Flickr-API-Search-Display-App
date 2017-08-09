@@ -8,9 +8,13 @@
 
 import UIKit
 import AFNetworking
+import SwiftyJSON
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,10 +31,24 @@ class ViewController: UIViewController {
                     parameters: searchParameters,
                     progress: nil,
                     success: { (operation: URLSessionDataTask, responseObject: Any?) in
-                        if let responseObject = responseObject {
-                            print("Response: " + (responseObject as AnyObject).description)
-                            
+                        if let photos = responseObject["photos"] as? [String: AnyObject?] {
+                            if let photoArray = photos["photo"] as? [[String: AnyObject]] {
+                                self.scrollView.contentSize = CGSize(width: 320, height: 320 * CGFloat(photoArray.count))
+                                for (i,photoDictionary) in photoArray.enumerate() {
+                                    if let imageURLString = photoDictionary["url_m"] as? String {
+                                        let imageData = NSData(contentsOf: URL(string: imageURLString)!)
+                                        if let imageDataUnwrapped = imageData {
+                                            let imageView = UIImageView(image: UIImage(data: imageDataUnwrapped as Data))
+                                           imageview.frame = CGRect(x: 0, y: 320 * CGFLoat(i), width: 320, height: 320)
+                                            self.scrollView.addSubview(imageView)
+                                        }
+                                    }
+                                }
+                            }
+                        
                         }
+                        
+                            
         }) {(operation:URLSessionDataTask?, error: Error) in
             print("Error: " + error.localizedDescription)
         }
