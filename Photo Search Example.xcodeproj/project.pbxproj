@@ -12,7 +12,24 @@
 		383D20721F3A8F4C00615FFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 383D20701F3A8F4C00615FFB /* Main.storyboard */; };
 		383D20741F3A8F4C00615FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 383D20731F3A8F4C00615FFB /* Assets.xcassets */; };
 		383D20771F3A8F4C00615FFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 383D20751F3A8F4C00615FFB /* LaunchScreen.storyboard */; };
+		383D207F1F3A8F9B00615FFB /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 383D207E1F3A8F9B00615FFB /* Cartfile */; };
+		383D20811F3A908600615FFB /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383D20801F3A908600615FFB /* AFNetworking.framework */; };
+		383D20821F3A908600615FFB /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 383D20801F3A908600615FFB /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		383D20831F3A908600615FFB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				383D20821F3A908600615FFB /* AFNetworking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		383D20691F3A8F4C00615FFB /* Photo Search Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Search Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +39,9 @@
 		383D20731F3A8F4C00615FFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		383D20761F3A8F4C00615FFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		383D20781F3A8F4C00615FFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		383D207E1F3A8F9B00615FFB /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
+		383D20801F3A908600615FFB /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		383D20841F3A919900615FFB /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				383D20811F3A908600615FFB /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +59,8 @@
 		383D20601F3A8F4C00615FFB = {
 			isa = PBXGroup;
 			children = (
+				383D20841F3A919900615FFB /* bridge.h */,
+				383D20801F3A908600615FFB /* AFNetworking.framework */,
 				383D206B1F3A8F4C00615FFB /* Photo Search Example */,
 				383D206A1F3A8F4C00615FFB /* Products */,
 			);
@@ -59,6 +82,7 @@
 				383D20701F3A8F4C00615FFB /* Main.storyboard */,
 				383D20731F3A8F4C00615FFB /* Assets.xcassets */,
 				383D20751F3A8F4C00615FFB /* LaunchScreen.storyboard */,
+				383D207E1F3A8F9B00615FFB /* Cartfile */,
 				383D20781F3A8F4C00615FFB /* Info.plist */,
 			);
 			path = "Photo Search Example";
@@ -74,6 +98,7 @@
 				383D20651F3A8F4C00615FFB /* Sources */,
 				383D20661F3A8F4C00615FFB /* Frameworks */,
 				383D20671F3A8F4C00615FFB /* Resources */,
+				383D20831F3A908600615FFB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,6 +150,7 @@
 			files = (
 				383D20771F3A8F4C00615FFB /* LaunchScreen.storyboard in Resources */,
 				383D20741F3A8F4C00615FFB /* Assets.xcassets in Resources */,
+				383D207F1F3A8F9B00615FFB /* Cartfile in Resources */,
 				383D20721F3A8F4C00615FFB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,10 +288,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Photo Search Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aanyajhaveri.Photo-Search-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = bridge.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -274,10 +306,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Photo Search Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aanyajhaveri.Photo-Search-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = bridge.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
