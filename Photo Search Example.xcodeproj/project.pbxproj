@@ -64,8 +64,8 @@
 		383D20601F3A8F4C00615FFB = {
 			isa = PBXGroup;
 			children = (
-				383D20851F3AA5C400615FFB /* SwiftyJSON.framework */,
 				383D20841F3A919900615FFB /* bridge.h */,
+				383D20851F3AA5C400615FFB /* SwiftyJSON.framework */,
 				383D20801F3A908600615FFB /* AFNetworking.framework */,
 				383D206B1F3A8F4C00615FFB /* Photo Search Example */,
 				383D206A1F3A8F4C00615FFB /* Products */,
@@ -345,6 +345,7 @@
 				383D207D1F3A8F4C00615FFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -23,7 +23,7 @@ class ViewController: UIViewController {
                                              "api_key": "e8b64840adaafc462120e621e5f01a67",
                                              "format": "json",
                                              "nojsoncallback": 1,
-                                             "text": "dogs",
+                                             "text": "cats",
                                              "extras": "url_m",
                                              "per_page": 5]
         
@@ -31,24 +31,21 @@ class ViewController: UIViewController {
                     parameters: searchParameters,
                     progress: nil,
                     success: { (operation: URLSessionDataTask, responseObject: Any?) in
-                        if let photos = responseObject["photos"] as? [String: AnyObject?] {
-                            if let photoArray = photos["photo"] as? [[String: AnyObject]] {
+                        if let photos = (responseObject as? [String: AnyObject?])?["photos"] {
+                            if let photoArray = photos?["photo"] as? [[String: AnyObject]] {
                                 self.scrollView.contentSize = CGSize(width: 320, height: 320 * CGFloat(photoArray.count))
-                                for (i,photoDictionary) in photoArray.enumerate() {
+                                for (i,photoDictionary) in photoArray.enumerated() {
                                     if let imageURLString = photoDictionary["url_m"] as? String {
                                         let imageData = NSData(contentsOf: URL(string: imageURLString)!)
-                                        if let imageDataUnwrapped = imageData {
-                                            let imageView = UIImageView(image: UIImage(data: imageDataUnwrapped as Data))
-                                           imageview.frame = CGRect(x: 0, y: 320 * CGFLoat(i), width: 320, height: 320)
+                                        let imageView = UIImageView(frame: CGRect(x: 0, y: 320*CGFloat(i), width: 320, height: 320))
+                                        if let url = URL(string: imageURLString) {
+                                            imageView.setImageWith(url)
                                             self.scrollView.addSubview(imageView)
                                         }
                                     }
                                 }
                             }
-                        
                         }
-                        
-                            
         }) {(operation:URLSessionDataTask?, error: Error) in
             print("Error: " + error.localizedDescription)
         }
